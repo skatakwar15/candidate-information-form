@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Profile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="center">
+        <h2>Candidate Profile</h2>
+        <div class="main">
+            <label for="name">Name:</label>
+            <span id="name"></span>
+            <br>
+            <label for="gender">Gender:</label>
+            <span id="gender"></span>
+            <br>
+            <label for="address">Address:</label>
+            <span id="address"></span>
+            <br>
+            <label for="email">Email:</label>
+            <span id="email"></span>
+            <br>
+            <label for="phone">Phone:</label>
+            <span id="phone"></span>
+            <h4>Education Details</h4>
+            <span id="ed1"></span>
+            
+            <h4>Skills & Hobbies</h4>
+            <span id="sk1"></span>
+            <br>
+
+            <label for="hobbies">Hobbies:</label>
+            <span id="hobbies"></span>
+            <br>
+            <label for="photo">Photo:</label>
+            <span id="photo"></span>
+    
+        
+        </div>
+    </div>
+    
+
+    
+
+</body>
+<script>
+    
+    var name= localStorage.getItem("Name");
+    var gender= localStorage.getItem("gender");
+    var address= localStorage.getItem("address");
+    var email= localStorage.getItem("email");
+    var phone= localStorage.getItem("phone");
+    var hobbies= localStorage.getItem("hobby");
+    var photo= localStorage.getItem("photo");
+    //var edcount=localStorage.getItem("edcount");
+    var ed1=localStorage.getItem("ed1");
+    // var ed2=localStorage.getItem("ed2");
+    // var ed3=localStorage.getItem("ed3");
+    // var ed4=localStorage.getItem("ed4");
+    // var ed5=localStorage.getItem("ed5");
+    // var ed6=localStorage.getItem("ed6");
+    // alert("the ed is: "+ed1);
+    
+    //var skillcount=localStorage.getItem("skillcount");
+    var sk1=localStorage.getItem("sroom1");
+    // alert("the sroom is"+sk1);
+
+    // var sk2=localStorage.getItem("sroom2");
+    // var sk3=localStorage.getItem("sroom3");
+    // var sk4=localStorage.getItem("sroom4");
+    // var sk5=localStorage.getItem("sroom5");
+    // var sk6=localStorage.getItem("sroom6");
+    
+    
+    
+
+    // var edParent=document.getElementById("edPrint");
+    // var edChild=document.createElement("div");
+
+    // for(var q=1;q<=edcount;q++){
+    //     ed[q]=localStorage.getItem("ed"+q);
+    //     edChild.setAttribute("class", "ed"+q);
+    // }
+    
+    
+    document.getElementById("name").innerHTML=(name);
+    document.getElementById("gender").innerHTML=(gender);
+    document.getElementById("address").innerHTML=(address);
+    document.getElementById("email").innerHTML=(email);
+    document.getElementById("phone").innerHTML=(phone);
+    document.getElementById("hobbies").innerHTML=(hobbies);
+    document.getElementById("photo").innerHTML=(photo);
+
+    document.getElementById("ed1").innerHTML=''+ed1+'';
+    // document.getElementById("ed2").innerHTML=(ed2);
+    // document.getElementById("ed3").innerHTML=(ed3);
+    // document.getElementById("ed4").innerHTML=(ed4);
+    // document.getElementById("ed5").innerHTML=(ed5);
+    // document.getElementById("ed6").innerHTML=(ed6);
+
+    document.getElementById("sk1").innerHTML=''+sk1+'';
+    // document.getElementById("sk2").innerHTML=''+sk2+'';
+    // document.getElementById("sk3").innerHTML=(sroom3);
+    // document.getElementById("sk4").innerHTML=(sroom4);
+    // document.getElementById("sk5").innerHTML=(sroom5);
+    // document.getElementById("sk6").innerHTML=(sroom6);
+
+    
+    
+    
+
+
+
+</script>
+</html>

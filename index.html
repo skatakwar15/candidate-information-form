@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Information</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+    <div class="center">
+        <h4>*Please fill all the details</h4>
+        <h3>Name & other details</h3>
+        <div class="main">
+            <div class="label1"> <!-- 1 -->
+                <label for="name">Name</label>
+                <input type="text" id='name' class="form-control">
+            </div>
+            <div> <!-- 2 -->
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+            <div> <!-- 3 -->
+                <label for="address" class="panel-heading">Address</label>
+                <textarea name="address" id="address" cols="30" rows="3"></textarea>
+            </div>
+            <div class="panel panel-default"> <!-- 4 -->
+                <label for="email">Email</label>
+                <input type="email" name="Email" id="email">
+            </div>
+            <div class="panel panel-default"> <!-- 5 -->
+                <label for="phone">Phone</label>
+                <input type="text" id="phone">
+            </div>
+        </div>
+        
+    
+        <h3>Education</h3>
+        <div id="boxes" class="main">
+            <div class="active"> <!-- 6 -->
+            
+                <label for="level">Level</label>
+                <select id="level">
+                    <option value="SSC">SSC</option>
+                    <option value="HSSC">HSSC</option>
+                    <option value="Diploma ">Diploma </option>
+                    <option value="BE">BE</option>
+                    <option value="BTech ">BTech</option>
+                    <option value="BCA ">BCA </option>
+                    <option value="MCA">MCA</option>
+                </select>
+    
+                <label for="year">Passout Year</label>
+                <input type="month" id="year">
+                
+                <label for="grade">Grade</label>
+                <input type="number" id="grade" min="0" max="100">%
+    
+                <!-- <button id="remove" onclick="Remove()">Remove</button> -->
+            </div>
+            <div class="panel panel-default">  <!-- 7 -->
+                <button id="addbutton" onclick="add_education_field()">Add Education</button>
+            </div>
+            <div id="education_field"></div>
+        </div>
+        
+    
+        <h3>Skills & other details</h3>
+        
+        <div class="main">
+            <div class="panel panel-default">
+                <div class="active">
+                    <label for="skill">Name</label>
+                    <input type="text" id="skill">
+    
+                    <label for="rating">Rating</label>
+                    <input type="number" id="rating" min="0" max="10">/10
+                    <!-- <button type="submit">Remove</button> -->
+    
+                </div>
+            </div>
+            <div class="panel panel-default">  <!-- 9 -->
+                <button type="submit" onclick="add_skill_field()">Add Skill</button>
+            </div>
+            <div id="skill_field"></div>
+    
+            <div> <!-- 10 -->
+                <label for="hobbies">Hobbies</label>
+                <input type="text" id="hobbies">
+            </div>
+            <div> <!-- 11 -->
+                <label for="photo">Photo</label>
+                <input type="text" id="photo">
+            </div>
+        </div>
+        
+        <div class="submit"> <!-- 12 -->
+            <input type="submit" onclick="main()" value="Submit">
+        </div>
+    </div>
+    
+    
+</body>
+<script>
+    //var counter = 1; //Set counter
+    /*document.getElementById('addbutton').onclick = repeat;
+    var i = 0;
+    var original = document.getElementById('boxes');
+    var clone = original.cloneNode();
+    function repeat() {
+        var clone = original.cloneNode(true);
+        clone.id = "repeatTHIS1" + ++i; 
+        original.parentNode.appendChild(clone);
+    }
+
+    document.getElementById('remove').onclick = Remove;
+    function Remove(){
+        //original.remove(clone);
+        
+        //clone.id = "repeatTHIS1" - i--; 
+        original.parentNode.removeChild(clone);
+    }*/
+    var name=document.getElementById("name").value;
+    localStorage.setItem("Name", name);
+    var room=0;
+    var sroom=0;
+    function main(){
+        var name=document.getElementById("name").value;
+        localStorage.setItem("Name", name);
+
+        var gender=document.getElementById("gender").value;
+        localStorage.setItem("gender", gender);
+
+        var address=document.getElementById("address").value;
+        localStorage.setItem("address", address);
+
+        var email=document.getElementById("email").value;
+        localStorage.setItem("email", email);
+
+        var phone=document.getElementById("phone").value;
+        localStorage.setItem("phone", phone);
+
+        var hobby=document.getElementById("hobbies").value;
+        localStorage.setItem("hobby", hobby);
+
+        var photo=document.getElementById("photo").value;
+        localStorage.setItem("photo", photo);
+
+        localStorage.setItem("skillcount", sroom);
+        localStorage.setItem("edcount", room);
+
+        // localStorage.setItem("ed", edArr.value);
+
+
+
+        window.location.href="profile.html"
+    }
+    function add_education_field(){
+        var level= $('#level').val();
+        var year= $('#year').val();
+        var grade=$('#grade').val();
+        //alert("your year is: "+year);
+
+        room++;
+        var parentDiv=document.getElementById('education_field');
+        var childDiv = document.createElement("div");
+        childDiv.setAttribute("class", "form-group removeclass"+room+"ed");
+        childDiv.innerHTML = '' +
+        '<div> <!-- 6 -->'+
+        '    <label for="level">Level</label>'+
+        '    <select readonly="readonly" id="level">'+
+        '        <option value="'+level+'">'+level+'</option>'+
+        '    </select>'+
+
+        '    <label for="year">Passout Year</label>'+
+        '    <input  readonly="readonly" type="month" id="year" value="'+year+'">'+
+            
+        '    <label for="grade">Grade</label>'+
+        '    <input readonly="readonly" type="number" id="grade" min="0" max="100" value="'+grade+'">%'+
+
+        '    <button id="remove" onclick="remove_education_fields('+room+')">Remove</button>'+
+        '</div>';
+        parentDiv.appendChild(childDiv);
+        var StoredDiv = $('.removeclass'+room+'ed').html();
+        manage_append(room,StoredDiv,'add');
+
+    }
+    
+    function add_skill_field(){
+        var skill = $('#skill').val();
+        var rating = $('#rating').val();
+        sroom++;
+        //alert("skill is"+skill+", and rating is: "+rating);
+
+        var skillParent=document.getElementById("skill_field");
+        var skillChild= document.createElement("div");
+        skillChild.setAttribute("class", "form-group removeclass"+sroom+"skill");
+        skillChild.innerHTML= ''+
+        '<div class="panel panel-default">'+
+        '<div class="active">'+
+        '    <label for="skill">Name</label>'+
+        '    <input readonly="readonly" type="text" id="skill" value="'+skill+'">'+
+
+        '    <label for="rating">Rating</label>'+
+        '    <input readonly="readonly" type="number" value="'+rating+'" id="rating" min="0" max="10">/10'+
+        '    <button type="submit" onclick="remove_skill_field('+sroom+')">Remove</button>'+
+
+        '</div></div>';
+        skillParent.appendChild(skillChild);
+        skillStored = $('.removeclass'+sroom+'skill').html();
+        manage_append_skill(sroom, skillStored, 'add');
+       
+
+    }
+    //var edArr={};
+    //var skillArr={}
+    function remove_skill_field(srid){
+        manage_append_skill(srid, 0, 'delete');
+        $('.removeclass'+srid+'skill').remove();
+        sroom--;
+        
+    }
+    function remove_education_fields(rid) {
+        manage_append(rid,0,'delete');
+        $('.removeclass'+rid+'ed').remove();
+        room--;
+    }
+    function manage_append(room, html, action){
+        if(action === 'add'){
+            localStorage.setItem('ed'+room,html);
+            // edArr[room]=html;
+            // alert("the html is "+ed[room]);
+            
+        }else{
+            localStorage.removeItem('ed'+room);
+            // edArr.pop();
+        }
+    }
+    function manage_append_skill(sroom, html, action){
+        if(action === 'add'){
+            localStorage.setItem('sroom'+sroom,html);
+            // skillArr[sroom]=html;
+            // alert("The skill is: "+skillArr[sroom]);
+        }else{
+            localStorage.removeItem('sroom'+sroom);
+            // skillArr.pop();
+        }
+    }
+    $(function () {
+        for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+         $("#education_fields").append( localStorage.getItem( localStorage.key( i ) ) );
+        }
+    });
+
+</script>
+
+</html>
