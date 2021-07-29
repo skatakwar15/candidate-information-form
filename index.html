@@ -20,6 +20,7 @@
                 <label for="name">Name</label>
                 <input type="text" id='name' oninput="nameFunc()" minlength="4" required>
             </div>
+
             <div> <!-- 2 -->
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control">
@@ -28,14 +29,17 @@
                     <option value="others">Others</option>
                 </select>
             </div>
+
             <div> <!-- 3 -->
                 <label for="address">Address</label>
                 <textarea name="address" id="address" cols="30" rows="4" maxlength="100" required></textarea>
             </div>
+
             <div> <!-- 4 -->
                 <label for="email">Email</label>
                 <input type="email" name="Email" id="email" required>
             </div>
+
             <div> <!-- 5 -->
                 <label for="phone">Phone</label>
                 <input type="text" id="phone" oninput="phonenumber()" minlength="10" maxlength="10">
@@ -66,9 +70,11 @@
     
                 <!-- <button id="remove" onclick="Remove()">Remove</button> -->
             </div>
+
             <div>  <!-- 7 -->
                 <button id="addbutton" onclick="add_education_field()">Add Education</button>
             </div>
+
             <div id="education_field"></div>
         </div>
         
@@ -84,18 +90,20 @@
                     <label for="rating">Rating</label>
                     <input type="number" id="rating" min="0" max="10">/10
                     <!-- <button type="submit">Remove</button> -->
-    
                 </div>
             </div>
+
             <div>  <!-- 9 -->
                 <button type="submit" onclick="add_skill_field()">Add Skill</button>
             </div>
+
             <div id="skill_field"></div>
     
             <div> <!-- 10 -->
                 <label for="hobbies">Hobbies</label>
                 <input type="text" id="hobbies">
             </div>
+            
             <div> <!-- 11 -->
                 <label for="photo">Photo</label>
                 <input type="text" id="photo" placeholder="Link to your online photo">
