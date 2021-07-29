@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Candidate Information</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,9 +16,9 @@
         <h4>*Please fill all the details</h4>
         <h3>Name & other details</h3>
         <div class="main">
-            <div class="label1"> <!-- 1 -->
+            <div> <!-- 1 -->
                 <label for="name">Name</label>
-                <input type="text" id='name' oninput="nameFunc()" class="form-control">
+                <input type="text" id='name' oninput="nameFunc()" minlength="4" required>
             </div>
             <div> <!-- 2 -->
                 <label for="gender">Gender</label>
@@ -30,22 +29,22 @@
                 </select>
             </div>
             <div> <!-- 3 -->
-                <label for="address" class="panel-heading">Address</label>
-                <textarea name="address" id="address" cols="30" rows="4" maxlength="100"></textarea>
+                <label for="address">Address</label>
+                <textarea name="address" id="address" cols="30" rows="4" maxlength="100" required></textarea>
             </div>
-            <div class="panel panel-default"> <!-- 4 -->
+            <div> <!-- 4 -->
                 <label for="email">Email</label>
-                <input type="email" name="Email" id="email">
+                <input type="email" name="Email" id="email" required>
             </div>
-            <div class="panel panel-default"> <!-- 5 -->
+            <div> <!-- 5 -->
                 <label for="phone">Phone</label>
-                <input type="tel" id="phone" oninput="phonenumber(value)" minlength="9" maxlength="10">
+                <input type="text" id="phone" oninput="phonenumber()" minlength="10" maxlength="10">
             </div>
         </div>
         
     
         <h3>Education</h3>
-        <div id="boxes" class="main">
+        <div class="main">
             <div class="active"> <!-- 6 -->
             
                 <label for="level">Level</label>
@@ -67,7 +66,7 @@
     
                 <!-- <button id="remove" onclick="Remove()">Remove</button> -->
             </div>
-            <div class="panel panel-default">  <!-- 7 -->
+            <div>  <!-- 7 -->
                 <button id="addbutton" onclick="add_education_field()">Add Education</button>
             </div>
             <div id="education_field"></div>
@@ -77,7 +76,7 @@
         <h3>Skills & other details</h3>
         
         <div class="main">
-            <div class="panel panel-default">
+            <div>
                 <div class="active">
                     <label for="skill">Name</label>
                     <input type="text" id="skill">
@@ -88,7 +87,7 @@
     
                 </div>
             </div>
-            <div class="panel panel-default">  <!-- 9 -->
+            <div>  <!-- 9 -->
                 <button type="submit" onclick="add_skill_field()">Add Skill</button>
             </div>
             <div id="skill_field"></div>
@@ -103,48 +102,63 @@
             </div>
         </div>
         
-        <div class="submit"> <!-- 12 -->
+        
+    </div>
+    <form action="profile.html">
+        <div > <!-- 12 -->
             <input type="submit" onclick="main()" value="Submit">
         </div>
-    </div>
+
+    </form>
     
     
 </body>
 <script>
-    //var counter = 1; //Set counter
-    /*document.getElementById('addbutton').onclick = repeat;
-    var i = 0;
-    var original = document.getElementById('boxes');
-    var clone = original.cloneNode();
-    function repeat() {
-        var clone = original.cloneNode(true);
-        clone.id = "repeatTHIS1" + ++i; 
-        original.parentNode.appendChild(clone);
-    }
-
-    document.getElementById('remove').onclick = Remove;
-    function Remove(){
-        //original.remove(clone);
-        
-        //clone.id = "repeatTHIS1" - i--; 
-        original.parentNode.removeChild(clone);
-    }*/
-    var name=document.getElementById("name").value;
-    localStorage.setItem("Name", name);
+    
+    //var name=document.getElementById("name").value;
+    //localStorage.setItem("Name", name);
+    
     var room=0;
     var sroom=0;
-    function nameFunc(){
-        var name=document.getElementById("name").value;
-        var allowed= /^[a-zA-Z]+ [a-zA-Z]+$/;
-        if(name==='' || name.match(allowed)==false || name.length<4){
-            return false;
-            alert("name input is wrong");
-        }else{
-            return true;
-            alert("name input is wrong");
+    
+    // function nameFunc(){
+    //     var name=document.getElementById("name").value.trim();
+    //     var allowed= /^[a-zA-Z]+ [a-zA-Z]+$/;
+    //     var nameCheck= allowed.test(name);
+    //     if(name.length>4){
+    //         if(nameCheck===false){
+    //             alert("name input is wrong");
+    //             return false;
+    //         }else{
+    //             return true;
+    //         }
+    //     }   
+    // }
+
+    function nameFunc()
+		{
+			var name= document.getElementById("name").value.trim();
+			//localStorage.setItem("txtValue", name);//for use in verification page
+
+			//var allowed_format = /^[a-zA-Z]+ [a-zA-Z]+$/;  // /^[a-zA-Z\s]+$/; //regex for accepting only [A-Z][a-z].
+			var allowed= /^[a-zA-Z]+ [a-zA-Z]+$/;
+            var nameCheck= allowed.test(name);
             
-        }
-    }
+            while(name.length>8){
+                if (nameCheck===false) 
+			    {
+				    alert("Name can’t be blank or anything other than [a-z][A-Z] !!!");
+			        return false;
+			    }
+			    else
+			    {
+				    //alert("Only Alphabets allowed [A-Z][a-z] with firstname and lastname");
+				    return true;
+			    }
+            }
+			
+		}
+    
     function main(){
         var name=document.getElementById("name").value;
         localStorage.setItem("Name", name);
@@ -169,24 +183,31 @@
 
         localStorage.setItem("skillcount", sroom);
         localStorage.setItem("edcount", room);
-
-        window.location.href="profile.html";
+        
+        // window.location.href="profile.html";
 
 
         
     }
-    function phonenumber(inputtxt)
+    
+    function phonenumber()
     {
-        var phoneno = /^\d{10}$/;
-        if((inputtxt.value.match(phoneno)))
-        {
-            return true;
+        var phone=document.getElementById("phone").value;
+        var allowed_phone = /^\d{10}$/;
+        var phoneCheck= allowed_phone.test(phone);
+        if(phone.length>9){
+            if(phoneCheck===true)
+            {
+                return true;
+            }
+            else
+            {
+                alert("Wrong number input, only [0-9]{10} format valid");
+                $('#phone').val('');
+                return false;
+            }
         }
-        else
-        {
-            alert("message");
-            return false;
-        }
+        
     }
 
     function add_education_field(){
@@ -199,6 +220,7 @@
         var parentDiv=document.getElementById('education_field');
         var childDiv = document.createElement("div");
         childDiv.setAttribute("class", "form-group removeclass"+room+"ed");
+    
         childDiv.innerHTML = '' +
         '<div> <!-- 6 -->'+
         '    <label for="level">Level</label>'+
@@ -214,21 +236,29 @@
 
         '    <button id="remove" onclick="remove_education_fields('+room+')">Remove</button>'+
         '</div>';
+    
         parentDiv.appendChild(childDiv);
+    
         var StoredDiv = $('.removeclass'+room+'ed').html();
         manage_append(room,StoredDiv,'add');
-
+    
+        $('#level').val('');
+        $('#year').val('');
+        $('#grade').val('');
     }
     
     function add_skill_field(){
         var skill = $('#skill').val();
         var rating = $('#rating').val();
+        
         sroom++;
+        
         //alert("skill is"+skill+", and rating is: "+rating);
 
         var skillParent=document.getElementById("skill_field");
         var skillChild= document.createElement("div");
         skillChild.setAttribute("class", "form-group removeclass"+sroom+"skill");
+        
         skillChild.innerHTML= ''+
         '<div class="panel panel-default">'+
         '<div class="active">'+
@@ -240,25 +270,22 @@
         '    <button type="submit" onclick="remove_skill_field('+sroom+')">Remove</button>'+
 
         '</div></div>';
+        
         skillParent.appendChild(skillChild);
+        
         skillStored = $('.removeclass'+sroom+'skill').html();
         manage_append_skill(sroom, skillStored, 'add');
-       
-
-    }
-    //var edArr={};
-    //var skillArr={}
-    function remove_skill_field(srid){
-        manage_append_skill(srid, 0, 'delete');
-        $('.removeclass'+srid+'skill').remove();
-        sroom--;
         
+        $('#skill').val('');
+        $('#rating').val('');
     }
+    //education manage
     function remove_education_fields(rid) {
         manage_append(rid,0,'delete');
         $('.removeclass'+rid+'ed').remove();
         room--;
     }
+    
     function manage_append(room, html, action){
         if(action === 'add'){
             localStorage.setItem('ed'+room,html);
@@ -270,6 +297,14 @@
             // edArr.pop();
         }
     }
+    //skill manage
+    function remove_skill_field(srid){
+        manage_append_skill(srid, 0, 'delete');
+        $('.removeclass'+srid+'skill').remove();
+        sroom--;
+        
+    }
+    
     function manage_append_skill(sroom, html, action){
         if(action === 'add'){
             localStorage.setItem('sroom'+sroom,html);
@@ -280,6 +315,7 @@
             // skillArr.pop();
         }
     }
+
     $(function () {
         for ( var i = 0, len = localStorage.length; i < len; ++i ) {
          $("#education_fields").append( localStorage.getItem( localStorage.key( i ) ) );
