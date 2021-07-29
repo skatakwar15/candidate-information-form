@@ -12,25 +12,26 @@
   
 </head>
 <body>
+    
     <div class="center">
         <h4>*Please fill all the details</h4>
         <h3>Name & other details</h3>
         <div class="main">
             <div class="label1"> <!-- 1 -->
                 <label for="name">Name</label>
-                <input type="text" id='name' class="form-control">
+                <input type="text" id='name' oninput="nameFunc()" class="form-control">
             </div>
             <div> <!-- 2 -->
                 <label for="gender">Gender</label>
                 <select id="gender" class="form-control">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                     <option value="others">Others</option>
                 </select>
             </div>
             <div> <!-- 3 -->
                 <label for="address" class="panel-heading">Address</label>
-                <textarea name="address" id="address" cols="30" rows="3"></textarea>
+                <textarea name="address" id="address" cols="30" rows="4" maxlength="100"></textarea>
             </div>
             <div class="panel panel-default"> <!-- 4 -->
                 <label for="email">Email</label>
@@ -38,7 +39,7 @@
             </div>
             <div class="panel panel-default"> <!-- 5 -->
                 <label for="phone">Phone</label>
-                <input type="text" id="phone">
+                <input type="tel" id="phone" oninput="phonenumber(value)" minlength="9" maxlength="10">
             </div>
         </div>
         
@@ -98,7 +99,7 @@
             </div>
             <div> <!-- 11 -->
                 <label for="photo">Photo</label>
-                <input type="text" id="photo">
+                <input type="text" id="photo" placeholder="Link to your online photo">
             </div>
         </div>
         
@@ -132,6 +133,18 @@
     localStorage.setItem("Name", name);
     var room=0;
     var sroom=0;
+    function nameFunc(){
+        var name=document.getElementById("name").value;
+        var allowed= /^[a-zA-Z]+ [a-zA-Z]+$/;
+        if(name==='' || name.match(allowed)==false || name.length<4){
+            return false;
+            alert("name input is wrong");
+        }else{
+            return true;
+            alert("name input is wrong");
+            
+        }
+    }
     function main(){
         var name=document.getElementById("name").value;
         localStorage.setItem("Name", name);
@@ -157,12 +170,25 @@
         localStorage.setItem("skillcount", sroom);
         localStorage.setItem("edcount", room);
 
-        // localStorage.setItem("ed", edArr.value);
+        window.location.href="profile.html";
 
 
-
-        window.location.href="profile.html"
+        
     }
+    function phonenumber(inputtxt)
+    {
+        var phoneno = /^\d{10}$/;
+        if((inputtxt.value.match(phoneno)))
+        {
+            return true;
+        }
+        else
+        {
+            alert("message");
+            return false;
+        }
+    }
+
     function add_education_field(){
         var level= $('#level').val();
         var year= $('#year').val();
