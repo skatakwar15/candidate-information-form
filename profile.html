@@ -28,9 +28,13 @@
             <span id="phone"></span><br>
             <h4>Education Details</h4>
             <span id="ed1"></span>
+            <span id="ed2"></span>
+            <span id="ed3"></span>
             
             <h4>Skills & Hobbies</h4>
             <span id="sk1"></span>
+            <span id="sk2"></span>
+            <span id="sk3"></span>
             <br>
 
             <label for="hobbies">Hobbies:</label>
@@ -57,21 +61,34 @@
     var phone= localStorage.getItem("phone");
     var hobbies= localStorage.getItem("hobby");
     var photo= localStorage.getItem("photo");
-    //var edcount=localStorage.getItem("edcount");
+
+
+    var edcount=localStorage.getItem("edcount");
     var ed1=localStorage.getItem("ed1");
-    // var ed2=localStorage.getItem("ed2");
-    // var ed3=localStorage.getItem("ed3");
+    var ed2=localStorage.getItem("ed2");
+    var ed3=localStorage.getItem("ed3");
     // var ed4=localStorage.getItem("ed4");
     // var ed5=localStorage.getItem("ed5");
     // var ed6=localStorage.getItem("ed6");
     // alert("the ed is: "+ed1);
-    
-    //var skillcount=localStorage.getItem("skillcount");
-    var sk1=localStorage.getItem("sroom1");
-    // alert("the sroom is"+sk1);
+    // var ed={};
 
-    // var sk2=localStorage.getItem("sroom2");
-    // var sk3=localStorage.getItem("sroom3");
+    // for(var a=0;a<edcount;a++)
+    // {
+    //     for(var b=1; b<a; b++){
+    //         ed[a] = localstorage.getItem("ed"+b);
+    //     }
+    //     // ed[a] = localstorage.getItem("ed"+(a+1));
+    // }
+    // document.getElementById("ed1").innerHTML=''+ed[0]+'';
+    // alert("the lement is: "+ed[1]);
+    
+    var skillcount=localStorage.getItem("skillcount");
+    
+    // alert("the sroom is"+sk1);
+    var sk1=localStorage.getItem("sroom1");   
+    var sk2=localStorage.getItem("sroom2");
+    var sk3=localStorage.getItem("sroom3");
     // var sk4=localStorage.getItem("sroom4");
     // var sk5=localStorage.getItem("sroom5");
     // var sk6=localStorage.getItem("sroom6");
@@ -98,19 +115,19 @@
     document.getElementById("photo").innerHTML='<iframe class="iframe" src='+photo+' scrolling="no"></iframe>';
 
     document.getElementById("ed1").innerHTML=''+ed1+'';
-    // document.getElementById("ed2").innerHTML=(ed2);
-    // document.getElementById("ed3").innerHTML=(ed3);
+    document.getElementById("ed2").innerHTML=(ed2);
+    document.getElementById("ed3").innerHTML=(ed3);
     // document.getElementById("ed4").innerHTML=(ed4);
     // document.getElementById("ed5").innerHTML=(ed5);
     // document.getElementById("ed6").innerHTML=(ed6);
 
     document.getElementById("sk1").innerHTML=''+sk1+'';
-    // document.getElementById("sk2").innerHTML=''+sk2+'';
-    // document.getElementById("sk3").innerHTML=(sroom3);
+    document.getElementById("sk2").innerHTML=''+sk2+'';
+    document.getElementById("sk3").innerHTML=''+sk3+'';;
     // document.getElementById("sk4").innerHTML=(sroom4);
     // document.getElementById("sk5").innerHTML=(sroom5);
     // document.getElementById("sk6").innerHTML=(sroom6);
-    localStorage.clear();
+    // localStorage.clear();
     
 </script>
 </html>
