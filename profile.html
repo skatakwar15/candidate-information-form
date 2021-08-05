@@ -43,6 +43,7 @@
             <label for="photo">Photo:</label>
             <!-- <span id="photo"></span> -->
             <div id="photo"></div>
+            <button onclick="reset()">Reset</button>
     
         
         </div>
@@ -127,7 +128,9 @@
     // document.getElementById("sk4").innerHTML=(sroom4);
     // document.getElementById("sk5").innerHTML=(sroom5);
     // document.getElementById("sk6").innerHTML=(sroom6);
-    // localStorage.clear();
+    function reset(){
+        localStorage.clear();
+    }
     
 </script>
 </html>
